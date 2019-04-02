@@ -48,13 +48,10 @@ class DoublyLinkedList:
         self.tail = node
 
     def add_to_head(self, value):
-          # get a ref to the current head [0]
         current_head = self.head
-        # if it is none, make a new head from passed value
         if not current_head:
             self.head = ListNode(value)
         else:
-              # if it is not the head, add it before and turn the previous head into the previous value
             current_head.insert_before(value)
             self.head = current_head.prev
 
@@ -77,16 +74,13 @@ class DoublyLinkedList:
             self.tail = current_tail.next
 
     def remove_from_tail(self):
-        # if no tail return none
         if not self.tail:
             return None
-            # if tail is also the head, make both == None
         if self.head == self.tail:
             tail = self.tail
             self.head = None
             self.tail = None
             return tail.value
-            # if tail is not also the head, remove it
         else:
             tail = self.tail
             self.tail.delete()
@@ -94,9 +88,8 @@ class DoublyLinkedList:
             return tail.value
 
     def move_to_front(self, node):
-        # check if already is in front
         if self.head is not node:
-            if node.next and node.prev:  # if in a middle spot
+            if node.next and node.prev:
                 node.delete()
             current_head = self.head
             self.head = node
@@ -104,9 +97,8 @@ class DoublyLinkedList:
             current_head.prev = node
 
     def move_to_end(self, node):
-         # check if the nodelist is empty
         if self.tail is not node:
-            if node.next and node.prev:  # if in a middle spot
+            if node.next and node.prev:
                 node.delete()
             current_tail = self.tail
             self.tail = node
